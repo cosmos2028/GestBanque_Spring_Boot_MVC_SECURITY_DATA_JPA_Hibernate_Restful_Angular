@@ -1,0 +1,23 @@
+- STATFULL(avec etat ou mémoire) : mode d'authentification qui stoke les données de sessios au niveau du serveur.
+Avantage(Utilisation) : il est plus utilisé lorque le code ou la page ou le rendu HTML est géneré coté serveur par exemple : thymleaf,JSP etc.
+
+- STATLESS(sans état): mode d'authentification qui stocke les données de session dans un JETON et délivré au client.
+Avantage(Utilisation) : il est plus utilisé lorque le code ou la page ou le rendu HTML est géneré coté client par exemple: Angular,moustache etc.
+Beaucoup utilisé pour les applications distribués par exemple les applications de google,quand on se connecte à Gmail,il nous renvoi un 
+TOKEN(JWT) et stoké quelque part dans la machine et tu y vas dans une application de google par exemple Youtube,il va vous authentifier
+automatiquement et facilement grace au token reçu en se connectant sur Gmail(et on a acces à plusiers application distribué de google)
+
+la différence : 
+- l'authentifiation STATFULL est géré cote serveur et le client reçoit uniquement le numéro de sa session et chaque fois le client envoi
+une requete, il doit aussi envoyer le numéro de sa session ainsi le serveur poura l'identifier. 
+par contre 
+- l'authentification STATLESS la session est géré coté client à travers un TOKEN et à chaque fois qu'il veut accéder à l'application
+il doit presenter son TOKEN
+
+
+STATFULL : Les failles de sécurités : Cross Site Request Forgery (CSRF)
+
+-c'est de forcer une operation(par un virement) avec la sessionID d'un autre sans qu'il ne sache.
+
+La prevention contre les attaques CSRF:
+c'est d'utiliser CSRF synchronizer TOKEN

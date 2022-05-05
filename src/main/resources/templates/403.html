@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+layout:decorate="template1"
+
+>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Gestion des autorisations</title>
+</head>
+
+<body>
+	<div layout:fragment="content1" >
+		<div class="container">
+			<h2 class="text-danger">Vous n'êtes pas autorisé à accéder à cette ressource</h2>
+		</div>
+	</div>	
+</body>
+
+
+</html>

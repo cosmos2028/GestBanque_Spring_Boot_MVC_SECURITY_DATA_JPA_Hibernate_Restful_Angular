@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="template1">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Formulaire des opérations</title>
+</head>
+
+<body>
+	<div layout:fragment="content1">
+	<div class="col-md-6 offset-3">
+		<form method="POST" th:action="@{/admin/enregistrer(pageActuel=${operationActionForm.pageActuelle},motCle=${operationActionForm.motCleCodeCompe})}" th:object="${operationActionForm}">
+			<div>
+				<label form="codeCompte">Code Compte</label>
+				<input class="form-control" id="codeCompte" type="text" name="codeCompte" 
+				th:value="${operationActionForm.codeCompte1}" th:field="*{codeCompte1}">
+				<span class="text-danger" th:errors="${operationActionForm.codeCompte1}">
+				</span>
+			</div>
+			<div>
+				<label>Code employe</label>
+				<input class="form-control" type="number" name="codeEmp" 
+				th:value="${operationActionForm.codeEmp}" th:field="*{codeEmp}">
+				<span class="text-danger" th:errors="${operationActionForm.codeEmp}">
+				</span>
+				
+			</div>
+			<div>
+				<label>Montant</label>
+				<input class="form-control" type="text" name="montantOp" 
+				th:value="${operationActionForm.montantOp}" th:field="*{montantOp}">
+				<!-- th:errors c'est une tag vient de la dependance validation et retourne 
+				BindingResult(l'erreur) si les criteres d'un des champ n'est pas respecte -->
+				<span class="text-danger" th:errors="${operationActionForm.montantOp}">
+				
+				</span>
+			</div>
+			<input type="hidden" th:value="${operationActionForm.type}" th:field="*{type}" />
+			<input type="hidden" th:value="${operationActionForm.numOp}" th:field="*{numOp}" />
+				<input type="hidden" th:value="${operationActionForm.edit}" th:field="*{edit}" />
+			<button class="btn btn-primary" type="submit" >Enregistrer</button>
+		</form>
+	</div>
+	
+	
+	</div>
+</body>
+
+
+</html>

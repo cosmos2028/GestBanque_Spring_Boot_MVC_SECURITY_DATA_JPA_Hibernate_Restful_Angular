@@ -1,0 +1,8 @@
+installation de lombok dans IDE eclipse
+
+1) ajouter la dependance dans le POM.XML
+2) aller dans le repo local de maven et doubler cliquer sur le jar de la version utilisé.exemple :
+C:\Users\lesta\.m2\repository\org\projectlombok\lombok\1.18.22 et doubler cliquer sur le jar (lombok-1.18.22)
+3) une fenetre lombok s'ouvre et selection le eclipse utilise(eclipse.exe)
+4)cliquer sur installer et fermer la fenetre de dialogue.
+5)redamerrer eclipse et faire un maven update sur le projet et c'est tout.

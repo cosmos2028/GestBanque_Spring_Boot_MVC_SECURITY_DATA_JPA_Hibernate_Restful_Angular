@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	>
+
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
+</head>
+
+<body>
+	<!-- Grey with black text -->
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<div class="container-fluid">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link active" th:href="@{/user/index}">accueil</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+				<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
+				</li>
+				<!-- Avant de masquer avec SEC, il faut le laisser et s'assurer que 
+				le mecanisme de protection est effective avec 403 ,apres cela on peut venir
+				le masquer comme ce qui suite en dessout -->
+				<li class="nav-item dropdown" sec:authorize="hasAuthority('ADMIN')"><a
+					class="nav-link dropdown-toggle" href="#" role="button"
+					data-bs-toggle="dropdown">Operation</a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" th:href="@{/admin/operationActionVerserRetraitVirementForm(typeOperation=V)}">Verser</a></li>
+						<li><a class="dropdown-item" th:href="@{/admin/operationActionVerserRetraitVirementForm(typeOperation=R)}">Retirer</a></li>
+						<li><a class="dropdown-item" th:href="@{/admin/operationActionVerserRetraitVirementForm(typeOperation=T)}">Virement</a></li>
+					</ul>
+				</li>
+				</ul>
+				<ul class="navbar-nav">
+				<li class="nav-item dropdown" sec:authorize="isAuthenticated()"><a
+					class="nav-link dropdown-toggle" href="#" role="button"
+					data-bs-toggle="dropdown">
+					<span sec:authentication="name"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" th:href="@{/logout}">Deconnection</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a sec:authorize="!isAuthenticated()" class="nav-link" th:href="@{/login}">Connection</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- thymeleaf va recuperer le contenu de la div où se trouve layout:fragment="content1"
+	et l'afficher ici en dessous  -->
+	<section layout:fragment="content1"></section>
+</body>
+</html>

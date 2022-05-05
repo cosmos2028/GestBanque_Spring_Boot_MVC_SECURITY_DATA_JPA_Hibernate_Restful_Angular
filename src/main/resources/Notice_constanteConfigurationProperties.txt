@@ -1,0 +1,13 @@
+pour creer les constantes dans le fichier de properties.
+(Centraliser les constantes dans un fichier de properties s'ils
+vont etre utilisés dans plusieurs page ou plusieurs dans la meme page )
+
+
+
+1) creer un fichier properties et le mettre dans le dossier resources
+
+2) creer public final class ConstantesConfigurations 
+
+3) creer public class Properties avec les cles comme constentes du fichier properties
+
+4) Enfin appeler la constante du properties : String TEST = (ConstantesConfigurations.getInstance().getProperty(Properties.VUE_INDEX)); 
